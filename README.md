@@ -33,8 +33,8 @@ python tests.py
 this is a simple implementation of a cache using Redis, about the requirements here is how i solved them:
 
 
-- `Simplicity`: the implementation is real simple, you just need the host url, the requiered ttl, the db name and the port used
-- `Resilient ` as for the implementation i do recomend seting up the enviroment on AWS Elasticache, here i can set up a Multi Availability Zone with Auto-Failover architecture so a read replica can easyli became the main node once the main node fails 
+- `Simplicity`: the implementation is real simple, you just need the host url, the required ttl, the db name and the port used
+- `Resilient ` as for the implementation i do recomend seting up the enviroment on AWS Elasticache, here i can set up a Multi Availability Zone with Auto-Failover architecture so a read replica can easily became the main node once the main node fails 
 - `Near real time replication of data across Geolocation`, `Data consistency across regions` and `Locality of reference` those three can be implemented using Redis Global Datastore, a service also provided by AWS that allows me to have a implementation distributed across the world with near real time replication (less than 1 second delay replication),  the replication is all handled by the service and the latenci can be monitored, the locality of reference would be managed by the consumers, every cluster has an endpoint so the consumer should always point to the closest service.
   to what ever reason
 - `Flexible Schema` Redis is a Key Value data store that allows to have a flexible schema
